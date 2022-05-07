@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name = "Parallel Testing Suite">
+    <test name = "Parallel Tests" parallel = "classes">
+        <classes>
+            <class name = "com.qualitymuseum.amazon.tests.CartPageTest" />
+            <class name = "com.qualitymuseum.duckduckgo.tests.HomePageTest" />
+        </classes>
+    </test>
+</suite>
