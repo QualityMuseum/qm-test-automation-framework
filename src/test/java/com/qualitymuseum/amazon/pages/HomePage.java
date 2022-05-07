@@ -1,5 +1,6 @@
 package com.qualitymuseum.amazon.pages;
 
+import com.qualitymuseum.framework.core.Commands;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,7 +24,7 @@ public class HomePage {
 
     /***********Methods*******************/
     public void searchProduct() {
-        searchTextBox.sendKeys("Computer");
-        searchSubmitButton.click();
+        Commands.SendKeys(searchTextBox, "Computer");
+        Commands.Click(searchSubmitButton);
     }
 }

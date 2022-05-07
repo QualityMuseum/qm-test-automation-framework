@@ -4,6 +4,7 @@ import com.qualitymuseum.amazon.pages.CartPage;
 import com.qualitymuseum.amazon.pages.HomePage;
 import com.qualitymuseum.amazon.pages.ProductPage;
 import com.qualitymuseum.amazon.pages.SearchPage;
+import com.qualitymuseum.amazon.core.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,62 +12,42 @@ import org.testng.annotations.Test;
 
 import static java.lang.Thread.sleep;
 
-public class CartPageTest {
-
+public class CartPageTest extends BaseTest {
 
     // Search "computer", add 1st product to cart and verify
     @Test
     public void testAddProduct() throws InterruptedException {
-        WebDriver driver;
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-
-        driver.get("https://amazon.com");
-
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.searchProduct();
 
-        SearchPage searchPage = new SearchPage(driver);
+        SearchPage searchPage = new SearchPage(getDriver());
         searchPage.clickFirstProduct();
 
-        ProductPage productPage = new ProductPage(driver);
+        ProductPage productPage = new ProductPage(getDriver());
         productPage.addProductToCart();
 
-        CartPage cartPage = new CartPage(driver);
-        cartPage.assertProduct(driver);
-
-        sleep(1000);
-        driver.quit();
-
+        CartPage cartPage = new CartPage(getDriver());
+        cartPage.assertProduct(getDriver());
     }
 
     // Empty cart and verify there is no product left
     @Test
     public void testEmptyCart() throws InterruptedException {
-        WebDriver driver;
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-
-        driver.get("https://amazon.com");
-
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.searchProduct();
 
-        SearchPage searchPage = new SearchPage(driver);
+        SearchPage searchPage = new SearchPage(getDriver());
         searchPage.clickFirstProduct();
 
-        ProductPage productPage = new ProductPage(driver);
+        ProductPage productPage = new ProductPage(getDriver());
         productPage.addProductToCart();
 
-        CartPage cartPage = new CartPage(driver);
-        cartPage.assertProduct(driver);
+        CartPage cartPage = new CartPage(getDriver());
+        cartPage.assertProduct(getDriver());
 
-        driver.get("https://www.amazon.com/gp/cart/view.html?ref_=nav_cart");
+        getDriver().get("https://www.amazon.com/gp/cart/view.html?ref_=nav_cart");
 
         cartPage.emptyCart();
-
-        sleep(1000);
-        driver.quit();
     }
 
 }

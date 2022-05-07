@@ -1,5 +1,8 @@
 package com.qualitymuseum.amazon.pages;
 
+import com.qualitymuseum.framework.core.Asserts;
+import com.qualitymuseum.framework.core.Commands;
+import com.qualitymuseum.framework.core.Conditions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,14 +23,13 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
-
     /***********Methods*******************/
     public void assertProduct(WebDriver driver) {
         driver.get("https://www.amazon.com/gp/cart/view.html?ref_=nav_cart");
-        Assert.assertTrue(productLink.isDisplayed());
+        Asserts.AssertTrue(Conditions.isDisplayed(productLink));
     }
 
     public void emptyCart() {
-        deleteButton.click();
+        Commands.Click(deleteButton);
     }
 }

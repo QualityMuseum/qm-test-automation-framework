@@ -1,5 +1,6 @@
 package com.qualitymuseum.amazon.pages;
 
+import com.qualitymuseum.framework.core.Commands;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,6 @@ public class SearchPage {
 
     /***********Methods*******************/
     public void clickFirstProduct() {
-        productLink.click();
+        Commands.Click(productLink);
     }
 }

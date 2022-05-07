@@ -1,5 +1,7 @@
 package com.qualitymuseum.amazon.pages;
 
+import com.qualitymuseum.framework.core.Asserts;
+import com.qualitymuseum.framework.core.Commands;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,13 +27,12 @@ public class ProductPage {
 
     /***********Methods*******************/
     public void addProductToCart() throws InterruptedException {
-        addtoCartButton.click();
+        Commands.Click(addtoCartButton);
         assertAddedToCartText();
     }
 
     public void assertAddedToCartText() throws InterruptedException {
         sleep(3000);
-        String string = addedToCartText.getText();
-        Assert.assertTrue(string.contains("Added to Cart"));
+        Asserts.AssertTrue(addedToCartText, "Added to Cart");
     }
 }

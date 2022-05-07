@@ -1,6 +1,7 @@
 package com.qualitymuseum.duckduckgo.pages;
 
-import org.openqa.selenium.By;
+import com.qualitymuseum.framework.core.Asserts;
+import com.qualitymuseum.framework.core.Commands;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,18 +28,17 @@ public class HomePage {
     /***********Methods*************/
     //Write Van Gogh in textbox
     public void enterSearchText(String string){
-        textBox.sendKeys(string);
+        Commands.SendKeys(textBox, string);
     }
 
     //Click on searchButton
     public void clickSearch(){
-        searchButton.click();
+        Commands.Click(searchButton);
     }
 
     //Get first results and verify that Van Gogh is written in the results
     public void assertFirstResult(String string){
-        String result = firstResult.getText();
-        Assert.assertTrue(result.contains(string));
+        Asserts.AssertTrue(firstResult, string);
     }
 
 
