@@ -2,6 +2,7 @@ package com.qualitymuseum.duckduckgo.pages;
 
 import com.qualitymuseum.framework.core.Asserts;
 import com.qualitymuseum.framework.core.Commands;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,17 +27,17 @@ public class HomePage {
     }
 
     /***********Methods*************/
-    //Write Van Gogh in textbox
+    @Step("Enter text to search box")
     public void enterSearchText(String string){
         Commands.SendKeys(textBox, string);
     }
 
-    //Click on searchButton
+    @Step("Click on searchButton")
     public void clickSearch(){
         Commands.Click(searchButton);
     }
 
-    //Get first results and verify that Van Gogh is written in the results
+    @Step("Get first results and verify that Van Gogh is written in the results")
     public void assertFirstResult(String string){
         Asserts.AssertTrue(firstResult, string);
     }

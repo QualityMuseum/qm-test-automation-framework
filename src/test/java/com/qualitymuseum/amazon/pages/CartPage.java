@@ -3,6 +3,7 @@ package com.qualitymuseum.amazon.pages;
 import com.qualitymuseum.framework.core.Asserts;
 import com.qualitymuseum.framework.core.Commands;
 import com.qualitymuseum.framework.core.Conditions;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,11 +25,13 @@ public class CartPage {
     }
 
     /***********Methods*******************/
+    @Step("Assert ProductLink")
     public void assertProduct(WebDriver driver) {
         driver.get("https://www.amazon.com/gp/cart/view.html?ref_=nav_cart");
         Asserts.AssertTrue(Conditions.isDisplayed(productLink));
     }
 
+    @Step("Click deleteButton")
     public void emptyCart() {
         Commands.Click(deleteButton);
     }

@@ -1,6 +1,7 @@
 package com.qualitymuseum.amazon.pages;
 
 import com.qualitymuseum.framework.core.Commands;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,7 @@ public class SearchPage {
 
 
     /***********Methods*******************/
+    @Step("Click productLink")
     public void clickFirstProduct() {
         Commands.Click(productLink);
     }
